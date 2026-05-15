@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web Development Services</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #0d0d0d;
+      --cream: #f7f4ef;
+      --gold: #c8a84b;
+      --gold-light: #e8d48a;
+      --muted: #6b6660;
+      --white: #ffffff;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 88vh;
+      background: var(--ink);
+      display: grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 6rem 2rem 5rem;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 70% 40%, rgba(200,168,75,.18) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 20% 80%, rgba(200,168,75,.10) 0%, transparent 60%);
+    }
+
+    .hero-inner {
+      position: relative;
+      text-align: center;
+      max-width: 780px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: .72rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(200,168,75,.4);
+      padding: .35rem 1rem;
+      border-radius: 2px;
+      margin-bottom: 2rem;
+      animation: fadeUp .6s ease both;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.1;
+      animation: fadeUp .7s .1s ease both;
+    }
+
+    .hero h1 span {
+      color: var(--gold);
+    }
+
+    .hero p {
+      margin-top: 1.6rem;
+      font-size: 1.05rem;
+      color: rgba(255,255,255,.65);
+      line-height: 1.75;
+      animation: fadeUp .7s .2s ease both;
+    }
+
+    .hero-cta {
+      margin-top: 2.6rem;
+      animation: fadeUp .7s .3s ease both;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--ink);
+      font-weight: 600;
+      font-size: .9rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: .85rem 2.2rem;
+      border-radius: 3px;
+      text-decoration: none;
+      transition: background .25s, transform .2s;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+    /* ── SECTION WRAPPER ── */
+    .section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 5rem 2rem;
+    }
+
+    .section-label {
+      font-size: .7rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+    }
+
+    .section p {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    /* dofollow link style */
+    a.dfl {
+      color: var(--gold);
+      text-decoration: underline;
+      text-decoration-color: rgba(200,168,75,.4);
+      text-underline-offset: 3px;
+      font-weight: 500;
+      transition: color .2s;
+    }
+    a.dfl:hover { color: #a07a20; }
+
+    /* ── SERVICES GRID ── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid rgba(0,0,0,.07);
+      border-radius: 6px;
+      padding: 2rem 1.8rem;
+      transition: box-shadow .25s, transform .25s;
+    }
+    .card:hover { box-shadow: 0 12px 36px rgba(0,0,0,.09); transform: translateY(-4px); }
+
+    .card-icon {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      margin-bottom: .6rem;
+    }
+
+    .card p {
+      font-size: .9rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      border: none;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0,0,0,.12), transparent);
+      margin: 0 2rem;
+    }
+
+    /* ── PROCESS ── */
+    .process-bg {
+      background: var(--ink);
+      color: var(--white);
+    }
+
+    .process-bg .section h2 { color: var(--white); }
+    .process-bg .section p { color: rgba(255,255,255,.6); }
+    .process-bg .section-label { color: var(--gold); }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+      counter-reset: step;
+    }
+
+    .step { counter-increment: step; }
+
+    .step-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      color: rgba(200,168,75,.25);
+      line-height: 1;
+      margin-bottom: .5rem;
+    }
+
+    .step h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: .4rem;
+    }
+
+    .step p {
+      font-size: .88rem;
+      color: rgba(255,255,255,.5);
+      line-height: 1.65;
+    }
+
+    /* ── CTA STRIP ── */
+    .cta-strip {
+      text-align: center;
+      padding: 5rem 2rem;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .cta-strip h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      margin-bottom: 1rem;
+    }
+
+    .cta-strip p {
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 2rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      color: rgba(255,255,255,.4);
+      text-align: center;
+      padding: 1.8rem;
+      font-size: .82rem;
+      letter-spacing: .04em;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">Our Services</span>
+    <h1>Expert <span><a href="https://imagemaster.net/" rel="dofollow" class="dfl" style="color:var(--gold);">Web Development</a></span><br>That Delivers Results</h1>
+    <p>We craft fast, beautiful, and scalable digital experiences.<br>From concept to launch, our <a href="https://imagemaster.net/" rel="dofollow" class="dfl">web development</a> process is built around your goals.</p>
+    <div class="hero-cta">
+      <a href="https://imagemaster.net/" rel="dofollow" class="btn-primary">Start Your Project</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT SERVICE ── -->
+<section class="section">
+  <p class="section-label">What We Do</p>
+  <h2>Full-Service <a href="https://imagemaster.net/" rel="dofollow" class="dfl">Web Development</a></h2>
+  <p>
+    Our team specialises in end-to-end <a href="https://imagemaster.net/" rel="dofollow" class="dfl">web development</a> — combining clean architecture, modern frameworks, and pixel-perfect design. Whether you need a corporate website, an e-commerce store, or a complex web application, our <a href="https://imagemaster.net/" rel="dofollow" class="dfl">web development</a> solutions are tailored to your industry and audience.
+  </p>
+
+  <div class="services-grid">
+    <div class="card">
+      <div class="card-icon">🖥️</div>
+      <h3>Custom Websites</h3>
+      <p>Unique, responsive sites built from scratch. Our <a href="https://imagemaster.net/" rel="dofollow" class="dfl">web development</a> team ensures your brand stands out online with bespoke design and code.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🛒</div>
+      <h3>E-Commerce</h3>
+      <p>High-converting online stores with seamless checkout flows. We leverage proven <a href="https://imagemaster.net/" rel="dofollow" class="dfl">web development</a> practices to maximise sales.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">⚡</div>
+      <h3>Performance Optimisation</h3>
+      <p>Speed matters. Our <a href="https://imagemaster.net/" rel="dofollow" class="dfl">web development</a> process includes rigorous performance audits so your site loads fast on every device.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- ── PROCESS ── -->
+<div class="process-bg">
+  <section class="section">
+    <p class="section-label">How We Work</p>
+    <h2>Our <a href="https://imagemaster.net/" rel="dofollow" style="color:var(--gold);text-decoration:underline;text-underline-offset:3px;">Web Development</a> Process</h2>
+    <p>A transparent, collaborative workflow from brief to go-live.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h4>Discovery</h4>
+        <p>We learn your goals, users, and competitors before writing a single line of code.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h4>Design</h4>
+        <p>Wireframes and visual mockups shaped around your brand identity.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h4>Development</h4>
+        <p>Clean, maintainable <a href="https://imagemaster.net/" rel="dofollow" style="color:var(--gold);">web development</a> with modern frameworks and best practices.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h4>Launch & Support</h4>
+        <p>Thorough QA, smooth deployment, and ongoing maintenance after go-live.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ── CTA ── -->
+<div class="cta-strip">
+  <h2>Ready to Build Something Great?</h2>
+  <p>Partner with us for <a href="https://imagemaster.net/" rel="dofollow" class="dfl">web development</a> that drives real business growth. Let's talk about your project today.</p>
+  <a href="https://imagemaster.net/" rel="dofollow" class="btn-primary">Get a Free Quote</a>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  &copy; 2026 &nbsp;·&nbsp; Professional <a href="https://imagemaster.net/" rel="dofollow" style="color:rgba(200,168,75,.7);text-decoration:none;">Web Development</a> Services &nbsp;·&nbsp; All rights reserved.
+</footer>
+
+</body>
+</html>
